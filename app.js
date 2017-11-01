@@ -5,10 +5,12 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
 mongoose.connection.openUri('mongodb://localhost/nodesr')
+mongoose.Promise = require('bluebird');
 let db = mongoose.connection;
 
-// Check connection
+// Check for connection to be and prompt
 db.once('open', function(){
     console.log('Connected to MongoDB');
 });
@@ -79,6 +81,6 @@ app.post('/resource/add', function(req, res){
 });
 
 // Start Server
-app.listen(3000, function(){
+app.listen(4000, function(){
     console.log('Server started on port 3000..')
 });
