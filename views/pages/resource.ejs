@@ -9,11 +9,12 @@
         </header>
         <main>
             <div class="container">
-                <h1><%= resource.title %></h1>
-                <br>
-                <h5>Written by <cite><%= resource.author %><cite></h5>
+                <h3><%= resource.title %></h3>
+                <p>Written by <cite><%= resource.author %><cite></p>
                 <hr>
-                <p><%= resource.body %></p>
+                <div class="container" id="bodybg">
+                <%- resource.body %>
+                </div>
                 <hr>
                 <% if (user) { %>
                     <% if (user.username == resource.author) { %>

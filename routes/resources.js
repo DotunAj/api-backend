@@ -61,9 +61,8 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
             req.flash('realDanger', 'Not Authorized');
             res.redirect('/dashboard');
         }
-        console.log(resource)
         res.render('pages/edit_resource', {
-            title:'Edit ' + resource.title,
+            title:resource.title,
             resource:resource
         }); 
         return;
