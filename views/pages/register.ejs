@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <% include ../common/head %>
+    </head>
+    <body>
+        <header>
+            <% include ../common/header %>
+            
+        </header>
+        <main>
+            <div class="container">
+                <h3 class= "pt-3 pb-3">Register</h3>
+                <% if (errors) { %>
+                    <% errors.forEach(function(error){ %>
+                        <div class="alert alert-realDanger">
+                            <%= error.msg %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+            
+                     <% }); %>
+                <% } %>
+                <form action="/users/register" method="post">
+                    <div class="form-group">
+                        
+                        <input type="text" class="form-control font-weight-bold" id="name" name="name" placeholder="Full Name">
+                    </div>
+                    <div class="form-group ">
+                        
+                        <input type="email" class="form-control font-weight-bold" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group ">
+                        
+                        <input type="text" class="form-control font-weight-bold" id="username" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group ">
+                        
+                        <input type="password" class="form-control font-weight-bold" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group ">
+                        
+                        <input type="password" class="form-control font-weight-bold" id="password" name="password2" placeholder="Confirm Password">
+                    </div>
+                    
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </form>
+            </div>
+        </main>
+    
+        <footer>
+            <% include ../common/footer %>
+        </footer>
+        <% include ../common/script %>
+    </body>
+</html>

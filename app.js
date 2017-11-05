@@ -4,9 +4,15 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
+const config = require('./config/database');
 
 
-mongoose.connection.openUri('mongodb://localhost/nodesr')
+
+mongoose.connection.openUri(config.database);
 mongoose.Promise = require('bluebird');
 let db = mongoose.connection;
 
@@ -33,12 +39,59 @@ app.use(bodyParser.json());
 //set public folder
 app.use(express.static(path.join(__dirname,'public')));
 
-//Bringing in the models
-let Resource = require('./models/resource');
+
+
+// Express Session Middleware
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+
+// Express Messages Middleware
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+// Express Validator Middleware
+app.use(expressValidator({
+    errorFormatter: function(param, msg, value) {
+        var namespace = param.split('.')
+        , root    = namespace.shift()
+        , formParam = root;
+  
+      while(namespace.length) {
+        formParam += '[' + namespace.shift() + ']';
+      }
+      return {
+        param : formParam,
+        msg   : msg,
+        value : value
+      };
+    }
+  }));
 
 // Setting view to ejs
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+// Passport config
+require('./config/passport')(passport);
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    next();
+});
+
+//Bringing in the models
+let Resource = require('./models/resource');
 
 
 // Home route
@@ -56,31 +109,13 @@ app.get('/', function(req, res){
     
 });
 
-// Add Resource route
-app.get('/resource/add', function(req, res){
-    res.render('pages/add_resource', {
-        title:'Add Resource'
-    });
-});
-
-// Add Submit POST route
-app.post('/resource/add', function(req, res){
-    let resource = new Resource();
-    resource.title = req.body.title;
-    resource.author = req.body.author;
-    resource.body = req.body.body;
-
-    resource.save(function(err){
-        if(err){
-            console.log(err);
-        }else{
-            res.redirect('/');
-        }
-    });
-
-});
+// Route Files
+let resources = require('./routes/resources');
+let users = require('./routes/users');
+app.use('/resources', resources);
+app.use('/users', users);
 
 // Start Server
 app.listen(4000, function(){
-    console.log('Server started on port 3000..')
+    console.log('Server started on port 4000..')
 });

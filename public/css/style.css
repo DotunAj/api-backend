@@ -3,6 +3,7 @@ body{
     z-index: 0;
     background: #fff;
     font-weight: bold;
+    color:000;
 }
 
 #hero{
@@ -16,7 +17,7 @@ body{
     
 }
 
-.navbar{
+#lnavbar{
     background: rgba(51, 73, 99, 0.42);
     height: 60px;
 }
@@ -33,7 +34,7 @@ body{
     text-decoration: none;
 }
 
-#title{
+#mtitle{
     margin-top: 20vh;
     color: #fff;
 }
@@ -49,4 +50,9 @@ body{
 .call_2_a{
     
     color: #fff;
+}
+
+#footer{
+    height: 50px;
+    background: rgba(51, 73, 99, 0.7);
 }
