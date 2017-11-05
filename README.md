@@ -25,3 +25,5 @@
   <li>Showing Students’ resource</li>
   <li>Editing and deleting students on backend.</li>
 </ul>
+
+<p>The deployed app is at: https://hidden-savannah-36785.herokuapp.com/ </p> 
