@@ -18,7 +18,7 @@ router.get('/add', ensureAuthenticated, function(req, res){
 });
 
 // Add Submit POST route
-router.post('/add', function(req, res){
+router.post('/add',ensureAuthenticated, function(req, res){
     req.checkBody('title', 'Title is required').notEmpty();
     //req.checkBody('author', 'Author is required').notEmpty();
     req.checkBody('body', 'Body is required').notEmpty();
@@ -28,6 +28,7 @@ router.post('/add', function(req, res){
 
     if(errors){
         res.render('pages/add_resource', {
+            user:user=true,
             title:'Add Resource',
             errors:errors,
         });
@@ -42,7 +43,7 @@ router.post('/add', function(req, res){
                 console.log(err);
             }else{
                 req.flash('success', 'Resource Added');
-                res.redirect('/');
+                res.redirect('/dashboard');
             }
         });
     }
@@ -58,7 +59,7 @@ router.get('/edit/:id', ensureAuthenticated, function(req, res){
     Resource.findById(req.params.id, function(err, resource){
         if(resource.author != req.user.username){
             req.flash('realDanger', 'Not Authorized');
-            res.redirect('/');
+            res.redirect('/dashboard');
         }
         console.log(resource)
         res.render('pages/edit_resource', {
@@ -83,7 +84,7 @@ router.post('/edit/:id', function(req, res){
             console.log(err);
         }else{
             req.flash('success', 'Resource Updated');
-            res.redirect('/');
+            res.redirect('/dashboard');
         }
     });
 

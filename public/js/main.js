@@ -6,7 +6,7 @@ $(document).ready(function(){
             type:'DELETE',
             url:'/resources/'+id,
             success: function(response){
-                window.location.href='/';
+                window.location.href='/dashboard';
             },
             error: function(err){
                 console.log(err);
@@ -23,7 +23,7 @@ $(document).ready(function(){
             type:'DELETE',
             url:'/users/'+id,
             success: function(response){
-                window.location.href='/';
+                window.location.href='/dashboard';
             },
             error: function(err){
                 console.log(err);

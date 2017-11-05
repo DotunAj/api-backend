@@ -6,6 +6,7 @@ const passport = require('passport');
 //Bringing in User model
 let User = require('../models/user');
 
+
 // Register Form
 router.get('/register', function(req, res){
     const errors = false;
@@ -77,19 +78,14 @@ router.get('/login', function(req, res){
 //Login process
 router.post('/login', function(req, res, next){
     passport.authenticate('local', {
-        successRedirect:'/users/dashboard',
+        successRedirect:'/dashboard',
         failureRedirect:'/users/login',
         failureFlash: true,
         successFlash: 'Welcome!'
     })(req, res, next);
 });
 
-// Dashboard
 
-router.get('/dashboard', function(req, res){
-    
-    res.render('pages/dashboard');
-});
 
 
 //Logout

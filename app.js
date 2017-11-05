@@ -109,6 +109,21 @@ app.get('/', function(req, res){
     
 });
 
+// Dashboard route
+app.get('/dashboard', function(req, res){
+    Resource.find({}, function(err, resources){
+        if(err){
+            console.log(err);
+        }else{
+            res.render('pages/dashboard', {
+                title:'Resource',
+                resources:resources
+            });
+        }
+    });
+    
+});
+
 // Route Files
 let resources = require('./routes/resources');
 let users = require('./routes/users');
