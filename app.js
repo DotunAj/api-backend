@@ -26,6 +26,9 @@ db.on('error', function(err){
     console.log(err);
 });
 
+//Port Number
+const port = process.env.PORT || 8080;
+
 // Initializing app
 const app = express();
 
@@ -131,6 +134,6 @@ app.use('/resources', resources);
 app.use('/users', users);
 
 // Start Server
-app.listen(4000, function(){
-    console.log('Server started on port 4000..')
+app.listen(port, function(){
+    console.log('Server started on port ',+ port)
 });
