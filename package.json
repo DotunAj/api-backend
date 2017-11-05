@@ -4,7 +4,6 @@
   "description": "An Andela web track assessement",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app"
   },
   "repository": {
@@ -12,7 +11,7 @@
     "url": "git+https://github.com/DotunAj/studentResource.git"
   },
   "author": "Ajala Ayodotun",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DotunAj/studentResource/issues"
   },
