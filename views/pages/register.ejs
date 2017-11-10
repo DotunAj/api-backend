@@ -3,13 +3,13 @@
     <head>
         <% include ../common/head %>
     </head>
-    <body>
+    <body id="main">
         <header>
             <% include ../common/header %>
             
         </header>
         <main>
-            <div class="container">
+            <div onclick="closeNav()" class="container">
                 <h3 class= "pt-3 pb-3">Register</h3>
                 <% if (errors) { %>
                     <% errors.forEach(function(error){ %>

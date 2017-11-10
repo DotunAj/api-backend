@@ -1,6 +1,6 @@
 {
   "name": "student-resource",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An Andela web track assessement",
   "main": "app.js",
   "scripts": {

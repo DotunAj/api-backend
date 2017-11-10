@@ -3,7 +3,7 @@ body{
     z-index: 0;
     background: #fff;
     
-    color:000;
+    color:#000;
 }
 
 #hero{
@@ -61,4 +61,64 @@ body{
 #footer{
     height: 50px;
     background: rgba(51, 73, 99, 0.7);
+}
+
+/*Nav Link Style */
+
+.navLink{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1000px) {
+    #navbarNavSide {display: none;}
+}
+
+@media screen and (min-width: 1000px) {
+    #hide {display: none;}
+}
+
+/*Side Nav Style */
+@media screen and (max-width: 1000px) {
+    .navLink{
+        height: 100%; /* 100% Full-height */
+        width: 0; /* 0 width - change this with JavaScript */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Stay on top */
+        top: 0;
+        left: 0;
+        background-color: #26464d; /* Primary Color*/
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 60px; /* Place content 60px from the top */
+        transition: 0.5 s; /* 0.5 second transition effect to slide in the sidenav */
+        margin-left: 0px;
+        padding-left: 10px;
+    }
+
+    /* The navigation menu links */
+    .navLink a {
+        padding: 15px 15px 15px 32px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .navLink a:hover, .offcanvas a:focus{
+        color: #f1f1f1;
+    }
+
+    /* Position and style the close button (top right corner) */
+    .navLink .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
 }

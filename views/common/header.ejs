@@ -1,17 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<div class="container">
+        <button onclick="openNav()" class="navbar-toggler" type="button" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
 		<a href="/" class="navbar-brand">
 			<img src="/img/logo.png" id="brand-img">
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="row collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="col-md-8 navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <% if (user) { %>
+		
+        <div class="row collapse navbar-collapse navLink" id="navbarNavSide">
+            <ul  class="font-weight-bold navbar-nav">
+                <li id="hide" class="nav-item"><a href="#" onclick="closeNav()" class="closebtn nav-link">&times</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <% if (user) { %>
                 <li class="nav-item">
                     <a class="nav-link" href="/resources/add">Add Resource</a>
                 </li>
@@ -19,8 +23,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal2">Delete Account</a>
                 </li>
-                
-
 
                 <div class="modal fade" id="exampleModal2" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -41,32 +43,28 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <% } %>
-            
-            
+                <% } %>
             </ul>
-            <div class="col-md-4 logsign justify-content-end d-flex">
-                <ul class="nav navbar-nav">
-                    <% if (user) { %>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" ><%= user.username %></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/users/logout">Logout <span class="sr-only">(current)</span></a>
-                        </li>
-                    <% } %>
-                    <% if (!user) { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/users/register">Sign Up <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/users/login">Login</a>
-                        </li>
-                    <% } %>
-                    
-                </ul>
-            </div>
+
+            <ul class="font-weight-bold navbar-nav">    
+                <% if (user) { %>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" ><%= user.username %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/logout">Logout <span class="sr-only">(current)</span></a>
+                </li>
+                <% } %>
+                <% if (!user) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/register">Sign Up <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/login">Login</a>
+                </li>
+                <% } %>
+
+            </ul>        
         </div>
 	</div>
 </nav>
