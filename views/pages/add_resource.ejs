@@ -3,12 +3,12 @@
     <head>
         <% include ../common/head %>
     </head>
-    <body>
+    <body id="main">
         <header>
             <% include ../common/header %>
             
         </header>
-        <main>
+        <main onclick="closeNav()">
             <div class="container">
                 <h2><%= title %></h2>
                 <% if (errors) { %>

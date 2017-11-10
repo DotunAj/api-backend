@@ -3,12 +3,12 @@
     <head>
         <% include ../common/head %>
     </head>
-    <body>
+    <body id="main">
         <header>
             <% include ../common/header %>
             
         </header>
-        <main>
+        <main onclick="closeNav()">
             <div class="container">
                 <h3 class= "pt-3 pb-3">Log In</h3>
                 <form action="/users/login" method="post">

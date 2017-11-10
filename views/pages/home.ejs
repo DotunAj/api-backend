@@ -3,7 +3,7 @@
 		<head>
 			<% include ../common/head %>
 		</head>
-		<body>
+		<body id="main">
 			<header>
 				
 			</header>
@@ -12,37 +12,38 @@
 		
 					<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 						<div class="container">
+
+							<button onclick=openNav() class="navbar-toggler" type="button" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+
 							<a href="/" class="navbar-brand">
 								<img src="/img/logo.png" id="brand-img">
 							</a>
-							<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="row collapse navbar-collapse" id="navbarNavDropdown">
-								<ul class="col-md-8 navbar-nav">
+							
+							<div onclick="closeNav()" class="row collapse navbar-collapse navLink" id="navbarNavSide" style="justify-content: flex-end;">
 								
-								</ul>
-								<div class="col-md-4 logsign justify-content-end d-flex">
-									<ul class="nav navbar-nav">
-										<% if (user) { %>
-											<li class="nav-item">
-												<a class="nav-link disabled" href="#" ><%= user.username %></a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="/users/logout">Logout <span class="sr-only">(current)</span></a>
-											</li>
-										<% } %>
-										<% if (!user) { %>
-											<li class="nav-item">
-												<a class="nav-link" href="/users/register">Sign Up <span class="sr-only">(current)</span></a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" href="/users/login">Login</a>
-											</li>
-										<% } %>
+								<ul class="nav navbar-nav">
+									<li id="hide" class="nav-item"><a href="#" onclick="closeNav()" class="closebtn nav-link">&times</a></li>
+									<% if (user) { %>
+										<li class="nav-item">
+											<a class="nav-link disabled" href="#" ><%= user.username %></a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/users/logout">Logout <span class="sr-only">(current)</span></a>
+										</li>
+									<% } %>
+									<% if (!user) { %>
+										<li class="nav-item">
+											<a class="nav-link" href="/users/register">Sign Up <span class="sr-only">(current)</span></a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/users/login">Login</a>
+										</li>
+									<% } %>
 										
-									</ul>
-								</div>
+								</ul>
+								
 							</div>
 						</div>
 					</nav>
@@ -52,27 +53,26 @@
 					</div>
 
 						
-		 	 		<div class="container"> 
+		 	 		<div onclick="closeNav()" class="container"> 
 						<div class="row hero-content pt-lg-6 pb-lg-6 pt-5">
 							<div id="hero-txt" class="col-md-12 col-sm-12 text-center">
-								<h1 class="text-center text-weight-bold" id="mtitle">Get the exact resource you need</h1>
-					 			<h5 class="text-center" id="sub-title">Or Donate</h5>
+								<h1 class="text-center text-weight-bold" id="mtitle">Get access to all the course materials you need</h1>
+					 			<h5 class="text-center" id="sub-title">Or better yet share</h5>
 								<div class="col-md-12 mt-5">
 									<a href="#resource" class="btn btn-lg btn-danger mr-4 call_2_a">Explore</a>
-									<a href="/resources/add" class="btn btn-lg btn-danger ml-4 call_2_a">Contribute</a>
+									<a href="/resources/add" class="btn btn-lg btn-danger ml-4 call_2_a">Share</a>
 								</div>
 							</div>
-						</div>
-							
+						</div>	
 					</div>
 
 				</div>
-				<div class ="container">
+				<div onclick="closeNav()" class ="container">
 					
 					<div class="row">
 					<div class="col-md-12">
 						<hr>
-						<h4 id="resource" class="container-fluid text-center font-weight-bold m-3">Resources</h4>
+						<h4 id="resource" class="container-fluid text-center font-weight-bold">Resources</h4>
 						<div class="list-group pb-4">
                      		<% resources.forEach(function(resource){ %>
                         	<a href="/resources/<%= resource._id %>" class="list-group-item list-group-item-action">
@@ -88,7 +88,7 @@
 		
 			<footer id="footer">
 				<div class="font-weight-normal text-center pt-2">
-    				<p>&copy Copyright 2017</p> 
+    				<p>&copy Student Resource</p> 
 				</div>
 			</footer>
 			<% include ../common/script %>
