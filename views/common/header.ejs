@@ -24,25 +24,6 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#exampleModal2">Delete Account</a>
                 </li>
 
-                <div class="modal fade" id="exampleModal2" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to your Account?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                <button type="button" class="btn btn-realDanger delete-user" data-id="<%= user._id %>" >Yes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <% } %>
             </ul>
 
@@ -66,6 +47,27 @@
 
             </ul>        
         </div>
+        <% if (user) { %>
+            <div class="modal fade" id="exampleModal2" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to your Account?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-realDanger delete-user" data-id="<%= user._id %>" >Yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
 	</div>
 </nav>
 <br>
